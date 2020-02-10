@@ -16,7 +16,6 @@ chai.use(require('chai-things'));
 require('geckodriver');
 
 const {
-    getDriver,
     checkDriver,
     testElementAppearsXTimesById,
     testWindowHeightChangeForcesComponentHeightChange,
@@ -54,10 +53,12 @@ const {
     LONG_JOB,
 } = require('../testResources');
 
+const { getDriver } = require('../driver');
+
 require('dotenv').config();
 
 const {
-    ZOWE_USERNAME: USERNAME, ZOWE_PASSWORD: PASSWORD, SERVER_HOST_NAME, SERVER_HTTPS_PORT,
+    ZOWE_USERNAME: USERNAME, ZOWE_PASSWORD: PASSWORD, SERVER_HOST_NAME, SERVER_HTTPS_PORT, TEST_BROWSER,
 } = process.env;
 
 const BASE_URL = `https://${SERVER_HOST_NAME}:${SERVER_HTTPS_PORT}/ui/v1/explorer-jes`;
@@ -71,8 +72,8 @@ describe('JES explorer function verification tests', function () {
 
     before('Initialise', async () => {
         // TODO:: Do we need to turn this into a singleton in order to have driver accessible by multiple files in global namespace?
-        driver = await getDriver();
-        await checkDriver(driver, BASE_URL, USERNAME, PASSWORD, SERVER_HOST_NAME, SERVER_HTTPS_PORT);
+        driver = await getDriver(TEST_BROWSER);
+        await checkDriver(driver, BASE_URL, USERNAME, PASSWORD, SERVER_HOST_NAME, SERVER_HTTPS_PORT, TEST_BROWSER);
 
         // Make sure we have a job in output and active
         await submitJob(SHORT_JOB, SERVER_HOST_NAME, SERVER_HTTPS_PORT, USERNAME, PASSWORD);

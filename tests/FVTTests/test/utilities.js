@@ -1,4 +1,7 @@
+
 const { By, until } = require('selenium-webdriver');
+const { assert } = require('chai');
+
 const fetch = require('node-fetch');
 const https = require('https');
 
