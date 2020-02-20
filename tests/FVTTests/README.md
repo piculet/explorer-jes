@@ -34,5 +34,3 @@ SERVER_HTTPS_PORT=7554 \
 TEST_BROWSER=firefox
 npm run test:fvt
 ```
-
-Default for TEST_BROWSER is firefox.

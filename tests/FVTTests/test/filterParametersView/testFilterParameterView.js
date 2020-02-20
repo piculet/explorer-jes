@@ -15,7 +15,7 @@ const chai = require('chai');
 chai.use(require('chai-things'));
 
 
-const {
+const { getDriver,
     checkDriver,
     testElementAppearsXTimesByCSS } = require('explorer-fvt-utilities');
 
@@ -33,8 +33,6 @@ const {
     testFilterDisplayStringValues,
     testFilterFormInputValues,
 } = require('../testFunctions');
-
-const { getDriver } = require('../driver');
 
 const {
     ZOWE_USERNAME: USERNAME, ZOWE_PASSWORD: PASSWORD, SERVER_HOST_NAME, SERVER_HTTPS_PORT, TEST_BROWSER,

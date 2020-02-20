@@ -15,7 +15,7 @@ const chai = require('chai');
 chai.use(require('chai-things'));
 
 
-const {
+const { getDriver,
     checkDriver,
     testElementAppearsXTimesById,
     testWindowHeightChangeForcesComponentHeightChange,
@@ -52,8 +52,6 @@ const {
     SHORT_JOB,
     LONG_JOB,
 } = require('../testResources');
-
-const { getDriver } = require('../driver');
 
 require('dotenv').config();
 
